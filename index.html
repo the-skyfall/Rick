@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<title>Document</title>
-
-	<script src="libs/gsap/gsap.min.js" defer></script>
-	<script src="libs/gsap/ScrollTrigger.min.js" defer></script>
-	<script src="libs/gsap/ScrollSmoother.min.js" defer></script>
-
-	<link rel="stylesheet" href="css/main.css">
-	<script src="js/app.js" defer></script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notes</title>
+  <link rel="stylesheet" href="./maincss/style.css">
 </head>
 <body>
+  <div class="conteyner">
+    <header class="head">
+      <img src="./assets/leading-icon.svg" alt="" class="delete-text-input btn-head-search">
+      <div class="perevod-text-fun">
+        <div class="perevod perevod-ru-qwerty" id="perevod-ru"><b>RU</b></div>
+        <div class="perevod perevod-uz-qwerty" id="perevod-uz"><b>UZ</b></div>
+      </div>
+      <h1 class="perevod-text" data-ru="Заметки" data-uz="Eslatmalar">Заметки</h1>
+      <input id="searchTerm" class="search" placeholder="Поиск списка дел...">
+      <img src="./assets/leading icon.svg" alt="" class="search-btn btn-head-search">
+      <img src="./assets/icon.png" alt="" class="delete-text-search-content btn-head-search" id="clearSearchBtn">
+    </header>
 
-	<div class="wrapper">
-		<div class="content">
+    <section class="block">
+      <div class="block-menu">
+        <h1 class="perevod-text" data-ru="Все заметки" data-uz="Barcha qaydlar">Все заметки</h1>
 
-			<header class="hero-section">
-				<img data-speed=".6" class="hero" src="img/hero 2.png" alt="Alt" >
-				<div class="container">
-					<div data-speed=".75" class="main-header">
-						<h1 class="main-title">Keanu Reeves</h1>
-					</div>
-				</div>
-			</header>
-		
-			<div class="portfolio">
-				<div class="container">
-					<main class="gallery">
-	
-						<div data-speed=".9" class="gallery__left">
-		
-							<img class="gallery__item" src="./img/work/6.png" alt="Alt">
-							
-							<img class="gallery__item" src="./img/work/5.jpg" alt="Alt">
-							<img class="gallery__item" src="./img/work/4.webp" alt="Alt">
-		
-						</div>
+        <div class="color-palette">
+          <div class="bg-color bgcolor-1" data-color="1"></div>
+          <div class="bg-color bgcolor-2" data-color="2"></div>
+          <div class="bg-color bgcolor-3" data-color="3"></div>
+          <div class="bg-color bgcolor-4" data-color="4"></div>
+          <div class="bg-color bgcolor-5" data-color="5"></div>
+          <div class="bg-color transparent" data-color="null">X</div>
+        </div>
 
-						<div data-speed="1.15" class="gallery__right">
-		
-							<div class="text-block gallery__item">
-								<h2 class="text-block__h">Константин: Повелитель тьмы</h2>
-								<p class="text-block__p">Джону Константину удалось не только побывать в аду, но и вернуться обратно. Родившись с неугодным самому себе талантом — способностью распознавать помесь ангелов и демонов, которые бродят по земле в облике людей, — Константин под давлением обстоятельств пытается совершить самоубийство, лишь бы избавиться от мучительных видений. Но неудачно. Воскрешенный против собственной воли он снова оказывается в мире живых. Теперь, отмеченный печатью суицида и получивший временное право на жизнь, он патрулирует границу, разделяющую рай и ад, тщетно надеясь на обретение спасения путем сражения с земными ставленниками зла.</p>
-							</div>
-	
-					        <img class="gallery__item" src="./img/work/3.jpg" alt="Alt">
-							
-							<div class="text-block gallery__item">
-								<h2 class="text-block__h">Матрица</h2>
-								<p class="text-block__p">Мир Матрицы — это иллюзия, существующая только в бесконечном сне обреченного человечества. Холодный мир будущего, в котором люди — всего лишь батарейки в компьютерных системах.</p>
-							</div>
+        <div class="spisok-munu-list">
+          <img class="img-spisok" src="./assets/Vector.png" alt="">
+          <h3 class="h3-zametka perevod-text" data-ru="Все заметки" data-uz="Barcha qaydlar">Список</h3>
+        </div>
+      </div>
 
-							<img class="gallery__item" src="./img/work/1.jpg" alt="Alt">
-							
-							<div class="text-block gallery__item">
-								<h2 class="text-block__h">Джон Уик</h2>
-								<p class="text-block__p">Джон Уик — бывший наемный убийца — ведет размеренную жизнь, когда преступник крадет его любимый Mustang 1969 года и попутно убивает собаку Дейзи, единственное живое напоминание об умершей жене. Жажда мести пробуждает в нем, казалось, утерянную хватку…</p>
-							</div>
+      <div id="notesContainer" class="content"></div>
 
-							<img class="gallery__item" src="./img/work/2.jpg" alt="Alt">
-		
-						</div>
+      <button id="showAddNoteModalBtn" class="create-list">
+        <img src="./assets/icon.svg" alt="">
+      </button>
+    </section>
 
-					</main>
-				</div>
-			</div>
-
-		</div>
-	</div>
-
+    <div id="noteModal" class="modal">
+      <div class="menu-modal">
+        <h2 class="perevod-text" data-ru="Добавить заметку" data-uz="Eslatma qo'shing" id="modalTitle">Добавить заметку</h2>
+        <div class="inp-create-list-block">
+          <span class="perevod-text" data-ru="Заголовка для заметки" data-uz="Eslatma uchun sarlavha">Заголовка для заметки</span>
+          <input id="noteTitle" maxlength="30" class="inp-create-list" placeholder="Заголовок заметки">
+        </div>
+        <div class="inp-create-list-block">
+          <span class="perevod-text" data-ru="Заметки" data-uz="Eslatmalar">Заметки</span>
+          <input id="noteContent" class="inp-create-list" placeholder="Содержание заметки">
+        </div>
+        <div class="color-time-bg-timeclock">
+          <div class="color-palette">
+            <div class="bg-color bgcolor-1" data-color="1"></div>
+            <div class="bg-color bgcolor-2" data-color="2"></div>
+            <div class="bg-color bgcolor-3" data-color="3"></div>
+            <div class="bg-color bgcolor-4" data-color="4"></div>
+            <div class="bg-color bgcolor-5" data-color="5"></div>
+          </div>
+          <div class="time-zametka"></div>
+        </div>
+        <div class="btn-ago-creat">
+          <button id="cancelNoteBtn" class="btn-ago-create-h2 btn-ago perevod-text" data-ru="Отменить" data-uz="Bekor qilish">Отменить</button>
+          <button id="saveNoteBtn" class="btn-ago-create-h2 btn-create perevod-text" data-ru="Добавить" data-uz="Qo'shish">Добавить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./main.js/script.js"></script>
 </body>
 </html>
